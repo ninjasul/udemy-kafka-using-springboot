@@ -27,8 +27,9 @@ public class LibraryEventsController {
     ) throws JsonProcessingException, ExecutionException, InterruptedException, TimeoutException {
         log.info("Before sendLibraryEvent()");
         //libraryEventProducer.sendLibraryEvent(libraryEvent);
-        SendResult<Integer, String> sendResult = libraryEventProducer.sendLibraryEventSynchronous(libraryEvent);
-        log.info("SendResult is {}", sendResult.toString());
+        //SendResult<Integer, String> sendResult = libraryEventProducer.sendLibraryEventSynchronous(libraryEvent);
+        //log.info("SendResult is {}", sendResult.toString());
+        libraryEventProducer.sendLibraryEvent_Approach2(libraryEvent);
         log.info("After sendLibraryEvent()");
 
         return ResponseEntity.status(HttpStatus.CREATED).body(libraryEvent);
