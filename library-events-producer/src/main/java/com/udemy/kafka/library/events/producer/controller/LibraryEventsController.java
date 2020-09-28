@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeoutException;
 
 @RestController
 @Slf4j
@@ -23,7 +24,7 @@ public class LibraryEventsController {
     @PostMapping("/v1/libraryevent")
     public ResponseEntity<LibraryEvent> postLibraryEvent(
         @RequestBody LibraryEvent libraryEvent
-    ) throws JsonProcessingException, ExecutionException, InterruptedException {
+    ) throws JsonProcessingException, ExecutionException, InterruptedException, TimeoutException {
         log.info("Before sendLibraryEvent()");
         //libraryEventProducer.sendLibraryEvent(libraryEvent);
         SendResult<Integer, String> sendResult = libraryEventProducer.sendLibraryEventSynchronous(libraryEvent);
