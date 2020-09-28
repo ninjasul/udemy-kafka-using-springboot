@@ -1,16 +1,20 @@
 package com.udemy.kafka.library.events.producer.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@AllArgsConstructor
 @NoArgsConstructor
-@Data
-@Builder
+@Getter
+@Setter
+@EqualsAndHashCode
 public class Book {
     private Integer bookId;
     private String bookName;
     private String bookAuthor;
+
+    @Builder
+    public Book(Integer bookId, String bookName, String bookAuthor) {
+        this.bookId = bookId;
+        this.bookName = bookName;
+        this.bookAuthor = bookAuthor;
+    }
 }
